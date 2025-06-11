@@ -1,13 +1,20 @@
 import { icons } from "@/constants/icons";
 import React from "react";
-import { Image, StyleSheet, TextInput, View } from "react-native";
+import { Image, TextInput, View } from "react-native";
 
 interface Searchabrprops {
   placeholder: string;
   onPress?: () => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
 }
 
-const Searchbar: React.FC<Searchabrprops> = ({ placeholder, onPress }) => {
+const Searchbar: React.FC<Searchabrprops> = ({
+  placeholder,
+  onPress,
+  value,
+  onChangeText,
+}) => {
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
       <Image
@@ -19,15 +26,14 @@ const Searchbar: React.FC<Searchabrprops> = ({ placeholder, onPress }) => {
       <TextInput
         onPress={onPress}
         placeholder={placeholder}
-        value=""
-        onChangeText={() => {}}
+        value={value}
         placeholderTextColor="#a8b5db"
         className="flex-1 ml-2 text-white"
+        autoCapitalize="none"
+        onChangeText={onChangeText}
       />
     </View>
   );
 };
 
 export default Searchbar;
-
-const styles = StyleSheet.create({});
